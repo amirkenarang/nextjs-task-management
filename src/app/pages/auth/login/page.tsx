@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import apiClient from "../../../../lib/apiClient";
+import apiClient from "@/lib/apiClient";
+import { Main } from "@/components/Main";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,31 +20,51 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-96">
-        <h1 className="text-2xl font-bold mb-6">Login</h1>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-2 mb-4 border rounded"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-2 mb-4 border rounded"
-        />
-        <button
-          onClick={handleLogin}
-          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-        >
+    <Main>
+      <div className="bg-white p-8 rounded-lg shadow-2xl w-96 transform transition-all duration-300 hover:scale-105">
+        <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
           Login
-        </button>
+        </h1>
+        <div className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          <button
+            onClick={handleLogin}
+            className="btn btn-primary"
+            // className="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300"
+          >
+            Login
+          </button>
+        </div>
+        <div className="mt-6 text-center">
+          <a href="#" className="text-sm text-blue-600 hover:underline">
+            Forgot password?
+          </a>
+        </div>
       </div>
-    </div>
+    </Main>
   );
 };
 

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import apiClient from "../../../lib/apiClient";
+import apiClient from "@/lib/apiClient";
+import { Main } from "@/components/Main";
 
 interface Task {
   id: number;
@@ -24,17 +25,19 @@ const TasksPage = () => {
   }, []);
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-6">Tasks</h1>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task.id} className="mb-4 p-4 border rounded">
-            <h2 className="text-xl font-semibold">{task.title}</h2>
-            <p>{task.description}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Main>
+      <div className="p-8">
+        <h1 className="text-2xl font-bold mb-6">Tasks</h1>
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id} className="mb-4 p-4 border rounded">
+              <h2 className="text-xl font-semibold">{task.title}</h2>
+              <p>{task.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Main>
   );
 };
 
