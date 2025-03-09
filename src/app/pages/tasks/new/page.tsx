@@ -18,8 +18,16 @@ const CreateTaskPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const dueDateISO = new Date(newTask.due_date).toISOString();
+
     try {
-      await apiClient.post("/tasks", newTask);
+      await apiClient.post("/tasks", {
+        ...newTask,
+        userId: 1, // TODO, get from user
+        project_id: 1,
+        due_date: dueDateISO,
+      });
       router.push("/pages/tasks");
     } catch (error) {
       console.error("Failed to create task:", error);
