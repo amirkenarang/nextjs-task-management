@@ -3,6 +3,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import apiClient from "@/lib/apiClient";
 import { Main } from "@/components/Main";
+import Button from "@/components/Button";
+import Input from "@/components/Input";
+import CardTitle from "@/components/CardTitle";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,47 +24,40 @@ const Login = () => {
 
   return (
     <Main>
-      <div className="bg-white p-8 rounded-lg shadow-2xl w-96 transform transition-all duration-300 hover:scale-105">
-        <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
-          Login
-        </h1>
-        <div className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Email
-            </label>
-            <input
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <CardTitle>Login</CardTitle>
+          <div className="space-y-4">
+            <Input
               type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              label="Email"
             />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Password
-            </label>
-            <input
+            <Input
               type="password"
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              label="Password"
             />
+            <div className="form-control mt-6">
+              <Button
+                onClick={handleLogin}
+                variant="primary"
+                size="md"
+                className="w-full"
+              >
+                Login
+              </Button>
+            </div>
+            <div className="text-center mt-4">
+              <a href="#" className="link link-primary" aria-disabled="true">
+                Forgot password? (Comming Soon)
+              </a>
+            </div>
           </div>
-          <button
-            onClick={handleLogin}
-            className="btn btn-primary"
-            // className="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300"
-          >
-            Login
-          </button>
-        </div>
-        <div className="mt-6 text-center">
-          <a href="#" className="text-sm text-blue-600 hover:underline">
-            Forgot password?
-          </a>
         </div>
       </div>
     </Main>
