@@ -5,7 +5,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;
-  variant?: "primary" | "secondary" | "accent" | "ghost" | "link";
+  variant?: "primary" | "secondary" | "accent" | "ghost" | "link" | "error";
   size?: "xs" | "sm" | "md" | "lg";
   disabled?: boolean;
 }
@@ -26,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     accent: "btn-accent",
     ghost: "btn-ghost",
     link: "btn-link",
+    error: "btn-error",
   };
 
   const sizeClasses = {

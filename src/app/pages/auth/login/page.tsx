@@ -23,6 +23,7 @@ const Login = () => {
   };
 
   const handleForgetPasswordRedirect = () => {
+    // TODO: Add forget password
     // router.push("/pages/auth/forget-password");
   };
 
