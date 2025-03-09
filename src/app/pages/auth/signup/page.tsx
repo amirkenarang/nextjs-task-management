@@ -7,35 +7,44 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import CardTitle from "@/components/CardTitle";
 
-const Login = () => {
+const Signup = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleLogin = async () => {
+  const handleSignup = async () => {
     try {
-      const response = await apiClient.post("/login", { email, password });
+      const response = await apiClient.post("/signup", {
+        name,
+        email,
+        password,
+        role: "admin",
+      });
       localStorage.setItem("token", response.data.token);
       router.push("/pages/tasks");
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Signup failed:", error);
     }
   };
 
-  const handleForgetPasswordRedirect = () => {
-    // router.push("/pages/auth/forget-password");
-  };
-
-  const handleSignupRedirect = () => {
-    router.push("/pages/auth/signup");
+  const handleLoginRedirect = () => {
+    router.push("/pages/auth/login");
   };
 
   return (
     <Main>
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
-          <CardTitle>Login</CardTitle>
+          <CardTitle>Signup</CardTitle>
           <div className="space-y-4">
+            <Input
+              type="name"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              label="Name"
+            />
             <Input
               type="email"
               placeholder="Enter your email"
@@ -52,30 +61,22 @@ const Login = () => {
             />
             <div className="form-control mt-6">
               <Button
-                onClick={handleLogin}
+                onClick={handleSignup}
                 variant="primary"
                 size="md"
                 className="w-full"
               >
-                Login
+                Signup
               </Button>
-            </div>
-            <div className="text-center mt-4">
-              <a
-                onClick={handleForgetPasswordRedirect}
-                className="link link-primary cursor-pointer"
-              >
-                Forgot password? (Comming Soon)
-              </a>
             </div>
             <div className="text-center mt-4 space-y-2">
               <p className="text-sm">
-                Already, don&apos;t have an account?{" "}
+                Already have an account?{" "}
                 <a
-                  onClick={handleSignupRedirect}
+                  onClick={handleLoginRedirect}
                   className="link link-primary cursor-pointer"
                 >
-                  Signup
+                  Login
                 </a>
               </p>
             </div>
@@ -86,4 +87,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
