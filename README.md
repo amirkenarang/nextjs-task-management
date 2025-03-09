@@ -1,36 +1,52 @@
+# Next Task Management Application
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+This is a boilerplate project that connected to it's [Golang application](https://github.com/amirkenarang/go-task-management)
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## TODO
 
-To learn more about Next.js, take a look at the following resources:
+- [x] Initialize project
+- [x] Install Dependencies
+- [x] Initialize `API Client` with axios
+  - [ ] Environment for BASE_URL
+- [x] Initialize daisyui and tailwindcss
+- [x] Login page
+  - [ ] Forget Password
+- [x] Signup Page
+- [x] Tasks
+  - [x] Create
+  - [x] Edit
+  - [x] Delete
+  - [x] Taskss List
+  - [ ] Create Component for dropdown and date-picker
+- [ ] Home Page
+- [ ] Error Handling
+  - [ ] Prepare Error pages
+  - [ ] Protect other pages
+- [ ] Dockerize Project
+- [ ] Unit Test
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Change Log
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See [Changelog](CHANGELOG.md) for more information.
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Amir Kenarang (<amir.kenarang@gmail.com>)
