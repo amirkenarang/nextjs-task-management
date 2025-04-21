@@ -34,51 +34,53 @@ const Signup = () => {
 
   return (
     <Main>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <CardTitle>Signup</CardTitle>
-          <div className="space-y-4">
-            <Input
-              type="name"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              label="Name"
-            />
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              label="Email"
-            />
-            <Input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              label="Password"
-            />
-            <div className="form-control mt-6">
-              <Button
-                onClick={handleSignup}
-                variant="primary"
-                size="md"
-                className="w-full"
-              >
-                Signup
-              </Button>
-            </div>
-            <div className="text-center mt-4 space-y-2">
-              <p className="text-sm">
-                Already have an account?{" "}
-                <a
-                  onClick={handleLoginRedirect}
-                  className="link link-primary cursor-pointer"
+      <div className="bg-gray-50 min-h-screen flex justify-center items-center p-4">
+        <div className="card w-full max-w-md bg-base-100 shadow-xl">
+          <div className="card-body">
+            <CardTitle>Signup</CardTitle>
+            <div className="space-y-4">
+              <Input
+                type="name"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                label="Name"
+              />
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                label="Email"
+              />
+              <Input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                label="Password"
+              />
+              <div className="form-control mt-6">
+                <Button
+                  onClick={handleSignup}
+                  variant="primary"
+                  size="md"
+                  className="w-full"
                 >
-                  Login
-                </a>
-              </p>
+                  Signup
+                </Button>
+              </div>
+              <div className="text-center mt-4 space-y-2">
+                <p className="text-sm">
+                  Already have an account?{" "}
+                  <a
+                    onClick={handleLoginRedirect}
+                    className="link link-primary cursor-pointer"
+                  >
+                    Login
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
