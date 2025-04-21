@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import apiClient from "@/lib/apiClient";
 import { Main } from "@/components/Main";
-import Button from "@/components/Button";
 import Input from "@/components/Input";
-import CardTitle from "@/components/CardTitle";
+import AuthCard from "@/components/AuthCard";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -15,15 +15,16 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await apiClient.post("/signup", {
+      await apiClient.post("/signup", {
         name,
         email,
         password,
         role: "admin",
       });
-      localStorage.setItem("token", response.data.token);
-      router.push("/pages/tasks");
+      router.push("/pages/auth/login");
+      toast.success("Sign up successfully!");
     } catch (error) {
+      toast.error("Signup failed");
       console.error("Signup failed:", error);
     }
   };
@@ -32,58 +33,44 @@ const Signup = () => {
     router.push("/pages/auth/login");
   };
 
+  const footerLinks = [
+    {
+      text: "Already have an account? Login",
+      onClick: handleLoginRedirect,
+    },
+  ];
+
   return (
     <Main>
       <div className="bg-gray-50 min-h-screen flex justify-center items-center p-4">
-        <div className="card w-full max-w-md bg-base-100 shadow-xl">
-          <div className="card-body">
-            <CardTitle>Signup</CardTitle>
-            <div className="space-y-4">
-              <Input
-                type="name"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                label="Name"
-              />
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                label="Email"
-              />
-              <Input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                label="Password"
-              />
-              <div className="form-control mt-6">
-                <Button
-                  onClick={handleSignup}
-                  variant="primary"
-                  size="md"
-                  className="w-full"
-                >
-                  Signup
-                </Button>
-              </div>
-              <div className="text-center mt-4 space-y-2">
-                <p className="text-sm">
-                  Already have an account?{" "}
-                  <a
-                    onClick={handleLoginRedirect}
-                    className="link link-primary cursor-pointer"
-                  >
-                    Login
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AuthCard
+          title="Signup"
+          onSubmit={handleSignup}
+          submitButtonText="Signup"
+          footerLinks={footerLinks}
+        >
+          <Input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            label="Name"
+          />
+          <Input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            label="Email"
+          />
+          <Input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password"
+          />
+        </AuthCard>
       </div>
     </Main>
   );
