@@ -5,6 +5,7 @@ import apiClient from "@/lib/apiClient";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { Main } from "@/components/Main";
+import toast from "react-hot-toast";
 
 const CreateTaskPage = () => {
   const router = useRouter();
@@ -28,8 +29,12 @@ const CreateTaskPage = () => {
         project_id: 1,
         due_date: dueDateISO,
       });
+      toast.success("Task Created!");
+
       router.push("/pages/tasks");
     } catch (error) {
+      toast.error("Failed to create task");
+
       console.error("Failed to create task:", error);
     }
   };
