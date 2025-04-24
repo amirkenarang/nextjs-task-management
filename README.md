@@ -25,11 +25,15 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - [x] Initialize project
 - [x] Install Dependencies
 - [x] Initialize `API Client` with axios
-  - [ ] Environment for BASE_URL
+  - [x] Environment for BASE_URL
 - [x] Initialize daisyui and tailwindcss
 - [x] Login page
   - [ ] Forget Password
 - [x] Signup Page
+- [x] Auth
+  - [x] Login
+  - [x] SignUp
+  - [x] Handle Routing
 - [x] Tasks
   - [x] Create
   - [x] Edit
@@ -37,10 +41,11 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
   - [x] Taskss List
   - [ ] Create Component for dropdown and date-picker
 - [ ] Home Page
+- [ ] Add Menu
 - [ ] Error Handling
   - [ ] Prepare Error pages
   - [ ] Protect other pages
-- [ ] Dockerize Project
+- [x] Dockerize Project
 - [ ] Unit Test
 
 ## Change Log

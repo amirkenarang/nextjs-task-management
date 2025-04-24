@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  nextjs:
+    build: .
+    container_name: nextjs-container
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://goapp:2112
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - task-managment-network
+
+networks:
+  task-managment-network:
+    name: task-managment-network
+    external: true
