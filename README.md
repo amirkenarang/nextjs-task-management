@@ -41,7 +41,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
   - [x] Taskss List
   - [ ] Create Component for dropdown and date-picker
 - [ ] Home Page
-- [ ] Add Menu
+- [x] Add Menu (Navbar)
 - [ ] Error Handling
   - [ ] Prepare Error pages
   - [ ] Protect other pages
